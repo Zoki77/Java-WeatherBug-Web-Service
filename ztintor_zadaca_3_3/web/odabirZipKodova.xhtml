@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Odabir zip kodova</title>
+        <h:outputStylesheet library="css" name="osnovna.css"  /> 
+    </h:head>
+    <h:body>
+        <h:form>
+            <div class="kodovi">
+                <div class="dodaj">
+                    <h:outputText value="Zip kodovi:"/><br/>
+                    <h:selectOneListbox value="#{odabirZipKodova.zipKodDodaj}" size="7">
+                        <f:selectItems value="#{odabirZipKodova.zipKodovi}"/>
+                    </h:selectOneListbox><br/>
+                    <h:commandButton value="Dodaj" action="#{odabirZipKodova.dodajZipKod()}"/>
+                </div>
+
+                <div class="odabir">
+                    <h:outputText value="Odabrani zip kodovi:"/><br/>
+                    <h:selectOneListbox value="#{odabirZipKodova.zipKodBrisi}" size="7">
+                        <f:selectItems value="#{odabirZipKodova.odabraniZipKodovi}"/>
+                    </h:selectOneListbox><br/>
+                    <h:commandButton value="Briši" action="#{odabirZipKodova.brisiZipKod()}"/>
+
+                </div>
+
+
+
+                <h:dataTable value="#{odabirZipKodova.meteoWSPodaci}" var="p" class="tablica">
+                    <h:column>
+                        <f:facet name="header">Grad</f:facet>
+                        <h:outputText value="#{p.city}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Širina</f:facet>
+                        <h:outputText value="#{p.latitude}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Visina</f:facet>
+                        <h:outputText value="#{p.longitude}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Temperatura</f:facet>
+                        <h:outputText value="#{p.temperature}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Vlaga</f:facet>
+                        <h:outputText value="#{p.humidity}"/>
+                    </h:column>       
+                </h:dataTable>
+            </div>
+            <h:commandButton value="Preuzmi podatke WS" action="#{odabirZipKodova.dajMeteoWSPodatke()}"/>
+            <h:commandButton value="Preuzmi podatke REST" action="#{odabirZipKodova.dajMeteoRESTPodatke()}"/><br/>
+            <div class="ispis">
+                <c:if test="#{odabirZipKodova.porukaPetDoDeset}">
+                    Dodajte između 5 i 10 kodova za WS podatke.<br/>
+                </c:if>
+                <c:if test="#{odabirZipKodova.porukaVecDodan}">
+                    Zip kod već dodan.<br/>
+                </c:if>
+                <c:if test="#{odabirZipKodova.porukaSelektirajZip}">
+                    Selektirajte 1 kod.<br/>
+                </c:if>
+            </div>
+            <h:outputText value="REST:"/>
+            <h:outputFormat escape="false" value="#{odabirZipKodova.meteoRESTPodaci}"/>
+        </h:form>
+    </h:body>
+</html>
+

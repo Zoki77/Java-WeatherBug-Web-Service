@@ -1,0 +1,48 @@
+.tablica {
+    border: 2px solid #C5BA85;
+    background-color: #B1E0F2;
+    text-align: center;
+    float:left;
+    width: 79.7%;
+}
+.tablica th{
+    background-color: #BFBEBB;
+    border-bottom: 1px solid black;
+}
+
+.tablica td{
+    border-bottom: 1px solid black;
+}
+
+.tablicaREST{
+    background-color:#B1E0F2; 
+}
+
+.tablicaREST td{
+    border:  1px solid black;
+}
+
+.kodovi{
+    overflow: hidden;
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+    margin-bottom: 1%;
+}
+.dodaj{
+    background-color: #D4D8D9;
+    padding-right: 2%;
+    float:left;
+    border-right: 1px solid black;
+}
+.odabir{
+    background-color: #C0F6FA;
+    padding-left: 2%;
+    float: left;
+    border-right: 1px solid black;
+}
+
+.ispis{
+    color: red;
+    font-size:larger;
+}
